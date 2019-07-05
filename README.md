@@ -16,8 +16,11 @@
 * 2）使用mycat时不需要改代码，而使用sharding-jdbc时需要修改代码
 
 * Mycat(proxy中间件层):
+
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/1227483-20180826205043063-1180010669.png)
+
 * Sharding-jdbc(TDDL为代表的应用层):
+
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/1227483-20180826205516638-921055686.png)
 
 
@@ -31,6 +34,7 @@
 * 3.1、行表达式标识符可以使用${...}或$->{...}，但前者与Spring本身的属性文件占位符冲突，因此在Spring环境中使用行表达式标识符建议使用$->{...}。
 
 * 4、写完基本的crud操作，postman进行测试:http://localhost:8080/user/save    ---项目启动指定配置文件指向dev
+
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705110702.png)
 
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705110712.png)
@@ -43,6 +47,7 @@
 * 3、在test 配置文件中配置t_user的分库库分表的规则(根据city_id 分库-根据sex 分表)
 
 * 4、postman进行测试:http://localhost:8080/user/save2    ---项目启动指定配置文件指向test
+
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113431.png)
 
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113453.png)
