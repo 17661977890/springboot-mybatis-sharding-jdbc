@@ -20,7 +20,7 @@ public class UserController {
 	private UserMapper userMapper;
 
     /**
-     * 测试单库分表 时候
+     * 测试单库分表 时候（也可以测试分库分表--水平拆分（将cityId 设置值改为i%2==...）---看效果会发现，一部分数据在1库user1表，一部分数据在2库user2表）
      * @return
      */
 	@RequestMapping("/user/save")
