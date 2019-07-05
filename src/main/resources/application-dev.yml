@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: sharding-springboot-mybatis1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.shardingjdbc.entity
+
+#单库分表配置
+sharding:
+  jdbc:
+    datasource:
+      names: ds0
+      # 数据源ds0
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test_order
+        username: root
+        password: root
+    config:
+      sharding:
+        props:
+          sql.show: true
+        tables:
+          t_user:  #t_user表
+            key-generator-column-name: id  #主键（自增）
+            actual-data-nodes: ds0.t_user${0..1}    #数据节点,均匀分布
+            table-strategy:  #分表策略
+              inline: #行表达式
+                sharding-column: sex #根据性别字段来分配数据
+                algorithm-expression: t_user${sex % 2}  #按模运算分配（sex字段值取余0就在t_user0 取余1就分配在t_user1）

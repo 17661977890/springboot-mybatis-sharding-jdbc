@@ -1,0 +1,4 @@
+# 通过调整配置文件没来测试不同的分库分表配置
+spring:
+  profiles:
+    active: test
