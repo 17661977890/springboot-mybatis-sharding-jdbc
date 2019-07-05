@@ -43,7 +43,7 @@ public class UserController {
 	}
 
     /**
-     * 测试分库分表
+     * 测试分库分表 （这个方法可以看出 根据切分规则，数据分布在不同库各个表）
      * @return
      */
     @RequestMapping("/user/save2")
