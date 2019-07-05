@@ -22,11 +22,17 @@ sharding:
     config:
       sharding:
         props:
-          sql.show: true
-        tables:
+          sql.show: true # 是否开启SQL显示，默认值: false
+#          executor:
+#            size: # 工作线程数量，默认值: CPU核数
+#          check:
+#             table:
+#                metadata:
+#                  enabled: # 是否在启动时检查分表元数据一致性，默认值: false
+        tables: #数据分片
           t_user:  #t_user表
             key-generator-column-name: id  #主键（自增）
-            actual-data-nodes: ds0.t_user${0..1}    #数据节点,均匀分布
+            actual-data-nodes: ds0.t_user${0..1}    #数据节点,均匀分布 -->由数据源名 + 表名组成，以小数点分隔。多个表以逗号分隔，支持inline表达式。缺省表示使用已知数据源与逻辑表名称生成数据节点。用于广播表（即每个库中都需要一个同样的表用于关联查询，多为字典表）或只分库不分表且所有库的表结构完全一致的情况
             table-strategy:  #分表策略
               inline: #行表达式
                 sharding-column: sex #根据性别字段来分配数据

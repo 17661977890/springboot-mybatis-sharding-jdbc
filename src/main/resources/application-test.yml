@@ -35,18 +35,45 @@ sharding:
         tables:
           # 对t_user表--分库分表设置
           t_user:
-            key-generator-column-name: id  #主键
+            key-generator-column-name: id  #主键---自增列名称，缺省表示不使用自增主键生成器
+            #key-generator-class-name: # 自增列值生成器类名称，缺省表示使用默认自增列值生成器。该类需提供无参数的构造器
             actual-data-nodes: ds${0..1}.t_user${0..1}    #数据节点,均匀分布
             # 分库策略
             database-strategy:
               inline: #行表达式
                 sharding-column: city_id        #列名称，多个列以逗号分隔
                 algorithm-expression: ds${city_id % 2}    #按模运算分配(取余0分配在order1数据库，取余1分配在数据库order2)
+                #================= 分库策略有四种--我们采用行表达式测试=========================
+#              standard: # 用于单分片键的标准分片场景
+#                sharding-column: # 分片列名称
+#                precise-algorithm-class-name: # 精确分片算法类名称，用于=和IN。该类需实现PreciseShardingAlgorithm接口并提供无参数的构造器
+#                range-algorithm-class-name: # 范围分片算法类名称，用于BETWEEN，可选。该类需实现RangeShardingAlgorithm接口并提供无参数的构造器
+#              complex: # 用于多分片键的复合分片场景
+#                sharding-columns: # 分片列名称，多个列以逗号分隔
+#                algorithm-class-name: # 复合分片算法类名称。该类需实现ComplexKeysShardingAlgorithm接口并提供无参数的构造器
+#              inline: # 行表达式分片策略
+#                sharding-column: # 分片列名称
+#                algorithm-expression: # 分片算法行表达式，需符合groovy语法
+#              hint: # Hint分片策略
+#                algorithm-class-name: # Hint分片算法类名称。该类需实现HintShardingAlgorithm接口并提供无参数的构造器
             # 分表策略
             table-strategy:
               inline: #行表达式
                 sharding-column: sex
                 algorithm-expression: t_user${sex % 2}
+                #=================四种分表策略==================
+#                standard: # 用于单分片键的标准分片场景
+#                  sharding-column: # 分片列名称
+#                  precise-algorithm-class-name: # 精确分片算法类名称，用于=和IN。该类需实现PreciseShardingAlgorithm接口并提供无参数的构造器
+#                  range-algorithm-class-name: # 范围分片算法类名称，用于BETWEEN，可选。该类需实现RangeShardingAlgorithm接口并提供无参数的构造器
+#                complex: # 用于多分片键的复合分片场景
+#                  sharding-columns: # 分片列名称，多个列以逗号分隔
+#                  algorithm-class-name: # 复合分片算法类名称。该类需实现ComplexKeysShardingAlgorithm接口并提供无参数的构造器
+#                inline: # 行表达式分片策略
+#                  sharding-column: # 分片列名称
+#                  algorithm-expression: # 分片算法行表达式，需符合groovy语法
+#                hint: # Hint分片策略
+#                  algorithm-class-name: # Hint分片算法类名称。该类需实现HintShardingAlgorithm接口并提供无参数的构造器
           # 对t_address表--分库设置
           t_address:
             key-generator-column-name: id
@@ -55,3 +82,29 @@ sharding:
               inline:
                 sharding-column: lit
                 algorithm-expression: ds${lit % 2}
+          # 读写分离配置
+#         master-slave-rules:
+#          ds0: # 主从数据源的名称
+#            master-data-source-name: # 主库数据源名称
+#            slave-data-source-names: # 从库数据源名称列表
+#            load-balance-algorithm-class-name: # 从库负载均衡算法类名称。该类需实现MasterSlaveLoadBalanceAlgorithm接口且提供无参数构造器
+#            load-balance-algorithm-type: # 从库负载均衡算法类型，可选值：ROUND_ROBIN，RANDOM。若`load-balance-algorithm-class-name`存在则忽略该配置
+#          ds1: # 主从数据源的名称
+#            master-data-source-name: # 主库数据源名称
+#            slave-data-source-names: # 从库数据源名称列表
+#            load-balance-algorithm-class-name: # 从库负载均衡算法类名称。该类需实现MasterSlaveLoadBalanceAlgorithm接口且提供无参数构造器
+#            load-balance-algorithm-type: # 从库负载均衡算法类型，可选值：ROUND_ROBIN，RANDOM。若`load-balance-algorithm-class-name`存在则忽略该配置
+#          map:
+#            key1: # 用户自定义配置 Key1为用户填
+#            key2: # 用户自定义配置
+#        orchestration: # 数据治理
+#          name: # 数据治理实例名称
+#          overwrite: # 本地配置是否覆盖注册中心配置。如果可覆盖，每次启动都以本地配置为准
+#          registry:
+#            server-lists: # 连接注册中心服务器的列表。包括IP地址和端口号。多个地址用逗号分隔。如: host1:2181,host2:2181
+#            namespace: # 注册中心的命名空间
+#            digest: # 连接注册中心的权限令牌。缺省为不需要权限验证
+#            operation-timeout-milliseconds: # 操作超时的毫秒数，默认500毫秒
+#            max-retries: # 连接失败后的最大重试次数，默认3次
+#            retry-interval-milliseconds: # 重试间隔毫秒数，默认500毫秒
+#            time-to-live-seconds: # 临时节点存活秒数，默认60秒

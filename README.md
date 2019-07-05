@@ -6,6 +6,8 @@
 
 * 官方网站：https://shardingsphere.apache.org/document/legacy/3.x/document/cn/overview/
 
+* 配置文件注释配置 可以去官网查看具体配置意义
+
 ![image](https://camo.githubusercontent.com/97a4eac3a5eac7cad65d3e85ad0865df4cc6923a/687474703a2f2f7778312e73696e61696d672e636e2f6c617267652f30303662374e786e677931673266373579697674736a33316375306a793077392e6a7067)
 
 ### 测试---单库分表
