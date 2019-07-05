@@ -10,6 +10,17 @@
 
 ![image](https://camo.githubusercontent.com/97a4eac3a5eac7cad65d3e85ad0865df4cc6923a/687474703a2f2f7778312e73696e61696d672e636e2f6c617267652f30303662374e786e677931673266373579697674736a33316375306a793077392e6a7067)
 
+
+## mycat 和 ShardingSphere 的原理区分：
+* 1）mycat是一个中间件的第三方应用，sharding-jdbc是一个jar包
+* 2）使用mycat时不需要改代码，而使用sharding-jdbc时需要修改代码
+
+* Mycat(proxy中间件层):
+![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/1227483-20180826205043063-1180010669.png)
+* Sharding-jdbc(TDDL为代表的应用层):
+![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/1227483-20180826205516638-921055686.png)
+
+
 ### 测试---单库分表
 * 1、首先集成一个不分库只分表的模式。创建一个springboot项目，这里使用Sharding-JDBC3.0版本。使用sharding-jdbc-spring-boot-starter集成
 
