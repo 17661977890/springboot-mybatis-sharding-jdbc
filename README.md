@@ -30,7 +30,7 @@
 * 4、postman进行测试:http://localhost:8080/user/save2    ---项目启动指定配置文件指向test
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113431.png)
 
-![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113451.png)
+![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113453.png)
 
 ![image](https://github.com/17661977890/springboot-mybatis-sharding-jdbc/blob/master/src/main/resources/image/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20190705113455.png)
 
