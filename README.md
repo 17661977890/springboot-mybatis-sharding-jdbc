@@ -4,6 +4,8 @@
 * ShardingSphere，它由Sharding-JDBC、Sharding-Proxy和Sharding-Sidecar（计划中）这3款相互独立的产品组成。定位为轻量级Java框架。其实就是一个增强版的JDBC驱动，完全兼容JDBC和各种ORM框架。内部改写了SQL的添加和查询规则。适用于任何基于Java的ORM框架，如：JPA, Hibernate, Mybatis, Spring JDBC Template或直接使用JDBC。
 * 目前已经进入Apache孵化器。以4.x版本为新的发布开始
 
+* 官方网站：https://shardingsphere.apache.org/document/legacy/3.x/document/cn/overview/
+
 ![image](https://camo.githubusercontent.com/97a4eac3a5eac7cad65d3e85ad0865df4cc6923a/687474703a2f2f7778312e73696e61696d672e636e2f6c617267652f30303662374e786e677931673266373579697674736a33316375306a793077392e6a7067)
 
 ### 测试---单库分表
